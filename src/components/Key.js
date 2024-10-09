@@ -10,8 +10,12 @@ class Key extends React.Component {
     let keyClassName = "key";
 
     const noteIsFlat = this.noteIsFlat(this.props.note);
+    const keyIsPressed = this.keyIsPressed(this.props.note, this.props.pressedKeys);
     if (noteIsFlat) {
       keyClassName += " flat";
+    }
+    if (keyIsPressed) {
+        keyClassName += "pressed";
     }
     
     let key;
