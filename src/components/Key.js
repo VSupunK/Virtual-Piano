@@ -1,14 +1,30 @@
 import React from "react";
-import './Key.css'
+import "./Key.css";
 
 class Key extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>Key</h1>
-            </div>
-        );
+  noteIsFlat = (note) => {
+    return note.length > 1;
+  };
+
+  render() {
+    let keyClassName = "key";
+
+    const noteIsFlat = this.noteIsFlat(this.props.note);
+    if (noteIsFlat) {
+      keyClassName += " flat";
     }
+    
+    let key;
+    if (noteIsFlat) {
+        key = <div className={keyClassName}></div>;
+    } else {
+        key = (
+            <div className={keyClassName}>
+                <div className="key-text">{this.props.note.toUpperCase()}</div>
+            </div>);
+    }
+    return key;
+  }
 }
 
-export {Key};
+export { Key };
