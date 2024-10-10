@@ -1,10 +1,16 @@
 import React from "react";
 import "./Key.css";
+import _ from 'lodash';
+import { NOTE_TO_KEY } from "../constants/data";
 
 class Key extends React.Component {
   noteIsFlat = (note) => {
     return note.length > 1;
   };
+
+  keyIsPressed = (note, pressedKeys) => {
+    return _.includes(pressedKeys, NOTE_TO_KEY[note]);
+  }
 
   render() {
     let keyClassName = "key";
@@ -15,7 +21,7 @@ class Key extends React.Component {
       keyClassName += " flat";
     }
     if (keyIsPressed) {
-        keyClassName += "pressed";
+        keyClassName += " pressed";
     }
     
     let key;
